@@ -1,0 +1,9 @@
+POST http://localhost:3001/api/blogs
+Content-Type: application/json
+
+{
+  "title": "Web Dev",
+  "author": "Miembros del equipo de Chrome",
+  "url": "https://web.dev/?hl=es-419",
+  "likes": 1062
+}
