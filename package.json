@@ -4,7 +4,7 @@
   "description": "Blog list application, that allows users to save information about interesting blogs they have stumbled across on the internet.",
   "main": "index.js",
   "scripts": {
-    "star": "node index.js",
+    "start": "node index.js",
     "dev": "nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
