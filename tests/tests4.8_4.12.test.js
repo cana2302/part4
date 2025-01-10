@@ -24,7 +24,13 @@ test('blogs are returned as json', async () => {
     .expect('Content-Type', /application\/json/)
 })
 
+test('verifies that ID property of the blog posts is named id', async () => {
+  const response = await api.get('/api/blogs')
+  const blogs = response.body
 
+  assert(blogs[0].id !== undefined)
+  assert(blogs[0]._id === undefined)
+})
 
 after(async () => {
   await mongoose.connection.close()
