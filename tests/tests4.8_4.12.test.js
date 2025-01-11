@@ -73,6 +73,31 @@ test('verify that if the likes property is missing from the request, it will def
   assert.strictEqual(blogAtEnd[lastblog].likes, 0)
 })
 
+test('verify that if the title or url properties are missing', async() => {
+  const newBlog = {
+    author: 'Test title missing Author',
+    url: 'https://test.title.missing.com',
+    likes: 15,
+  }
+
+  await api
+  .post('/api/blogs')
+  .send(newBlog)
+  .expect(400)
+
+  const newBlog1 = {
+    title: 'Test url missing Blog',
+    author: 'Test url missing Author',
+    likes: 20,
+  }
+
+  await api
+  .post('/api/blogs')
+  .send(newBlog1)
+  .expect(400)
+
+})
+
 after(async () => {
   await mongoose.connection.close()
 })
