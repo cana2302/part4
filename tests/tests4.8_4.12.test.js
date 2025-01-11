@@ -53,6 +53,26 @@ test('verify POST new blog', async () => {
   assert(authors.includes('Test Author'))
 })
 
+test('verify that if the likes property is missing from the request, it will default to the value 0', async() => {
+  const newBlog = {
+    title: 'Test likes Blog',
+    author: 'Test likes Author',
+    url: 'https://test.likes.com',
+    likes: 0,
+  }
+
+  await api
+    .post('/api/blogs')
+    .send(newBlog)
+    .expect(201)
+    .expect('Content-Type', /application\/json/)
+
+  const blogAtEnd = await helper.blogsInDb()
+  const lastblog = blogAtEnd.length-1
+  
+  assert.strictEqual(blogAtEnd[lastblog].likes, 0)
+})
+
 after(async () => {
   await mongoose.connection.close()
 })
