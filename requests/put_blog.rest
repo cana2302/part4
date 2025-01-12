@@ -1,9 +1,9 @@
-POST http://localhost:3001/api/blogs
+PUT http://localhost:3001/api/blogs/5a422aa71b54a676234d17f8/
 Content-Type: application/json
 
 {
   "title": "Web Dev",
   "author": "Miembros del equipo de Chrome",
   "url": "https://web.dev/?hl=es-419",
-  "likes": 1062
+  "likes": 1999999
 }

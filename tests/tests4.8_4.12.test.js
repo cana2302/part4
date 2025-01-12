@@ -97,7 +97,7 @@ test('verify that if the title or url properties are missing', async() => {
   .expect(400)
 })
 
-test('succeeds with status code 204 if id is valid', async () => {
+test('succeeds with status code 204 if id is valid', async() => {
   const blogsAtStart = await helper.blogsInDb()
   const blogToDelete = blogsAtStart[0]
 
@@ -113,7 +113,25 @@ test('succeeds with status code 204 if id is valid', async () => {
   assert(!titles.includes(blogToDelete.title))
 })
 
+test('verify if blog/id modify likes property succeds', async() => {
+  const updateBlog = {
+    title: 'Test update likes',
+    author: 'Test Author',
+    url: 'https://test.update.likes.com',
+    likes: 9999999,
+  }
 
+  const blogsAtStart = await helper.blogsInDb()
+  const blogToUpdate = blogsAtStart[0]
+  
+  await api
+  .put(`/api/blogs/${blogToUpdate.id}`)
+  .send(updateBlog)
+  .expect(200)
+
+  const blogsAtEnd = await helper.blogsInDb()
+  assert.strictEqual(blogsAtEnd[0].likes, updateBlog.likes)
+})
 
 after(async () => {
   await mongoose.connection.close()
