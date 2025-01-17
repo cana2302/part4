@@ -66,7 +66,7 @@ describe('total likes', () => {
 
 })
 
-describe('favoriteBlog', () => {
+describe('Helper Functions and Unit Tests, step: 3, 4 and 5', () => {
 
   const blogs = [
     {
@@ -141,6 +141,18 @@ describe('favoriteBlog', () => {
 
     const result1 = listHelper.mostBlogs(blogs)
     assert.deepStrictEqual(result1, mostBlogAuthor)
+  })
+
+  test('finds out which author has most likes totally', () => {
+   
+    const mostLikesByAuthor = 
+    {
+      author: "Edsger W. Dijkstra",
+      likes: 17
+    }
+
+    const result2 = listHelper.mostLikes(blogs)
+    assert.deepStrictEqual(result2, mostLikesByAuthor)
   })
 
 })
