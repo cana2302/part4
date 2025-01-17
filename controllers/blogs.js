@@ -48,8 +48,19 @@ blogsRouter.post('/', async (request, response) => {
 
 // ---- DELETE ID ----
 blogsRouter.delete('/:id', async (request, response) => {
-  await Blog.findByIdAndDelete(request.params.id)
-  response.status(204).end()
+  const blogId = request.params.id
+  const blog = await Blog.findById(blogId)
+  const idUserCreator = blog.user.toString()
+  const decodedToken = jwt.verify(request.token, process.env.SECRET)
+  const idUserTryToDelete = decodedToken.id.toString()
+  
+  if (idUserCreator === idUserTryToDelete) {
+    await Blog.findByIdAndDelete(blogId)
+    response.status(204).end()
+  } else {
+    response.status(403).json({ error: 'wrong token. invalid operation' })
+  }
+
 })
 
 // --- UPDATE LIKES ----
