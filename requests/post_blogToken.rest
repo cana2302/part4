@@ -1,11 +1,11 @@
 POST http://localhost:3001/api/blogs
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImhlbGxhcyIsImlkIjoiNjc4OGVmNTVhZjI3NDFlMmZhZGE4ZThkIiwiaWF0IjoxNzM3MDUwOTk0LCJleHAiOjE3MzcwNTQ1OTR9.uCTKEPd7TZMYm0OgkRnZoaePOznxhOlvGQ4gF31pIY8
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImhlbGxhcyIsImlkIjoiNjc4OGVmNTVhZjI3NDFlMmZhZGE4ZThkIiwiaWF0IjoxNzM3MTI1NzE1LCJleHAiOjE3MzcxMjkzMTV9.lhDGRTOktmS8_QvV3GKWYWWrTduicSY9sr8zZRkdK6o
 
 {
-  "title": "React React",
-  "author": "Michael Chan Michael",
-  "url": "https://reactpatterns.com/",
+  "title": "try userExtractor",
+  "author": "try userExtractor",
+  "url": "try userExtractor",
   "likes": 7
 }
 
